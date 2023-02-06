@@ -11,12 +11,7 @@ void GetCurrentPosition(const geometry_msgs::Pose::ConstPtr& msg)
   curpos[1] = msg -> position.y;
 }
 
-enum state{
-  GOPICK,
-  CARRY,
-  GODROP,
-  DONE
-} state=GOPICK;
+bool CARRY = false;
 
 double GetDistance(double goalpos[2]){
   double dist_x = goalpos[0] - curpos[0];
@@ -105,31 +100,27 @@ int main( int argc, char** argv )
 
     r.sleep();
    
-    if (state == GOPICK) {
+    if (not CARRY) {
       marker.action = visualization_msgs::Marker::ADD;
       marker.pose.position.x = pickup[0];
       marker.pose.position.y = pickup[1];
       marker_pub.publish(marker);
-      if (GetDistance(pickup) < 0.3) {
+      if (GetDistance(pickup) < 0.03) {
         sleep(5);
         ROS_INFO("Reached at the pickup point");
-        state = CARRY;
+        marker.action = visualization_msgs::Marker::DELETE;
+        marker_pub.publish(marker);
+        CARRY = true;
       }
     }
-    else if (state == CARRY) {
-      marker.action = visualization_msgs::Marker::DELETE;
-      marker_pub.publish(marker);
-      state = GODROP;
-    }
     else {
-      marker.action = visualization_msgs::Marker::ADD;
-      marker.pose.position.x = dropoff[0];
-      marker.pose.position.y = dropoff[1];
-      marker_pub.publish(marker);
-      if (GetDistance(dropoff) < 0.3) {
+      if (GetDistance(dropoff) < 0.03) {
+        marker.action = visualization_msgs::Marker::ADD;
+        marker.pose.position.x = dropoff[0];
+        marker.pose.position.y = dropoff[1];
+        marker_pub.publish(marker);
         sleep(5);
         ROS_INFO("Reached at the dropoff point");
-        state = DONE;
       }
     }
   }
