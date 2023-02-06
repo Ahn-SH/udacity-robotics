@@ -25,7 +25,7 @@ int main( int argc, char** argv )
   ros::NodeHandle n;
   ros::Rate r(1);
   ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
-  ros::Subscriber pos_sub = n.subscribe("odom", 50, GetCurrentPosition); 
+  ros::Subscriber pos_sub = n.subscribe("/amcl_pose", 50, GetCurrentPosition); 
 
   // Set our initial shape type to be a cube
   uint32_t shape = visualization_msgs::Marker::CUBE;
