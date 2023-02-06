@@ -33,6 +33,7 @@ int main( int argc, char** argv )
 
   while (ros::ok())
   {
+    ros::spinOnce();
     visualization_msgs::Marker marker;
     // Set the frame ID and timestamp.  See the TF tutorials for information on these.
     marker.header.frame_id = "map";
