@@ -1,5 +1,6 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
+#include <geometry_msgs/Pose.h>
 
 double pickup[2] = {3.0, 1.0};
 double dropoff[2] = {-2.0, -2.0};
