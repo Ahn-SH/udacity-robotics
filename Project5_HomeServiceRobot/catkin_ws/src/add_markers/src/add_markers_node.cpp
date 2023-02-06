@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
-#include <geometry_msgs/Pose.h>
+#include <geometry_msgs/PoseWtihCovarianceStamped.h>
 
 double pickup[2] = {3.0, 1.0};
 double dropoff[2] = {-2.0, -2.0};
@@ -8,8 +8,8 @@ double curpos[2] = {0.0, 0.0};
 
 void GetCurrentPosition(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg)
 {
-  curpos[0] = msg -> position.x;
-  curpos[1] = msg -> position.y;
+  curpos[0] = msg -> pose.pose.position.x;
+  curpos[1] = msg -> pose.pose.position.y;
 }
 
 bool CARRY = false;
