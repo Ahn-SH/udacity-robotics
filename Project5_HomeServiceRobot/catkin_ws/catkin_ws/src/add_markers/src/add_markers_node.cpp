@@ -6,7 +6,7 @@ double pickup[2] = {3.0, 1.0};
 double dropoff[2] = {-2.0, -2.0};
 double curpos[2] = {0.0, 0.0};
 
-void GetCurrentPosition(const geometry_msgs::Pose::ConstPtr& msg)
+void GetCurrentPosition(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg)
 {
   curpos[0] = msg -> position.x;
   curpos[1] = msg -> position.y;
