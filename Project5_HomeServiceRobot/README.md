@@ -43,14 +43,22 @@ The package I used in this project is
  You can see the green particles in the image below. <br />
  The range of the particles distribution becomes narrower and narrower as the robot gets to know where it is. <br />
  ![alt text](https://github.com/Ahn-SH/udacity-robotics/blob/master/Project5_HomeServiceRobot/image_2.png)
+ <br />
+ <br />
 - turtlebot_rviz_launchers (view_navigation.launch) <br />
  This package is for saving time setting some configurations of rviz workspace.
+ <br />
+ <br />
 - turtlebot_gazebo (turtlebot_world.launch) <br />
  This is the basic gazebo environment where the robot performs pick-up and drop-off actions.
  ![alt text](https://github.com/Ahn-SH/udacity-robotics/blob/master/Project5_HomeServiceRobot/image_1.png)
+ <br />
+ <br />
 - pick_objects (pick_ojbects_node.cpp) <br />
- With this file, the robot moves to the pick-up or drop-off point finding the best way to get there in real time.
+ With this file, the robot moves to the pick-up or drop-off point finding the best way to get there in real time. 
+ ![alt text](https://github.com/Ahn-SH/udacity-robotics/blob/master/Project5_HomeServiceRobot/towards_goal.png)
 - add_markers (add_markers_node.cpp / add_markers_node_time.cpp) <br />
  add_markers notes the pick-up point and drop-off point with dark blue box shape. <br />
-add_markers_node.cpp delete the pick-up / drop-off marker when the robot gets there. <br />
-add_markers_node_time.cpp just shows the pick-up point and drop-off point alternately every 5 seconds. <br />
+ add_markers_node.cpp delete the pick-up / drop-off marker when the robot gets there. <br />
+ add_markers_node_time.cpp just shows the pick-up point and drop-off point alternately every 5 seconds.
+ ![alt text](https://github.com/Ahn-SH/udacity-robotics/blob/master/Project5_HomeServiceRobot/add_markers_image.gif)
